@@ -13,6 +13,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  bool passwordVisible = false;
+
   void handleLogin(BuildContext context) {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
@@ -45,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Top black section with logo and pattern
+            // Top black section
             Container(
               height: MediaQuery.of(context).size.height * 0.25,
               decoration: const BoxDecoration(
@@ -80,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
 
             const SizedBox(height: 30),
 
-            // Email field
+            // Email Field
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
@@ -99,12 +101,12 @@ class _LoginPageState extends State<LoginPage> {
 
             const SizedBox(height: 20),
 
-            // Password field
+            // Password Field with eye icon
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
                 controller: passwordController,
-                obscureText: true,
+                obscureText: !passwordVisible,
                 decoration: InputDecoration(
                   hintText: 'Password',
                   filled: true,
@@ -112,6 +114,16 @@ class _LoginPageState extends State<LoginPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      passwordVisible ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        passwordVisible = !passwordVisible;
+                      });
+                    },
                   ),
                 ),
               ),
@@ -209,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
 
             const SizedBox(height: 20),
 
-            // Continue with Google Button
+            // Google Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: SizedBox(
