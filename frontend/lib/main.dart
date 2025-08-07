@@ -4,6 +4,7 @@ import 'login_page.dart';
 import 'signup_page.dart';
 import 'email_otp_input_page.dart';
 import 'home_page.dart';
+import 'emergency_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => const SignUpPage(),
         '/forgot-password': (context) => const EmailOtpInputPage(), 
         '/home': (context) => const HomePage(),
+        '/emergency': (context) => const EmergencyPage(),
       },
     );
   }
