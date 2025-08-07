@@ -86,7 +86,7 @@ class SmartTransportBody extends StatelessWidget {
           const SizedBox(height: 10),
           OutlinedButton.icon(
             onPressed: () {
-  Navigator.pushNamed(context, '/emergency');
+ 
 },
 
             icon: const Icon(Icons.map),
